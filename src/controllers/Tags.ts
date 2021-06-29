@@ -7,9 +7,9 @@ class Tags {
 
     const createTagService = new CreateTagService();
 
-    const tags = await createTagService.execute(name);
+    const tag = await createTagService.execute(name);
 
-    response.status(201).json(tags);
+    response.status(201).json(tag);
   }
 }
 
