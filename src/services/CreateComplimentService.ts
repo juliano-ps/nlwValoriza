@@ -1,4 +1,6 @@
 import { getCustomRepository } from "typeorm";
+import { NotFoundError } from "../errors/NotFoundError";
+import { UnprocessableEntityError } from "../errors/UnprocessableEntityError";
 import { ComplimentsRepositories } from "../repositories/ComplimentsRepositories";
 import { UsersRepositories } from "../repositories/UsersRepositories";
 
@@ -15,13 +17,13 @@ class CreateComplimentService {
     const usersRepositories = getCustomRepository(UsersRepositories);
 
     if(userReceiver === userSender) {
-      throw new Error("User cannot send a compliment to itself");
+      throw new UnprocessableEntityError("User cannot send a compliment to itself");
     }
 
     const usersReceiverExists = await usersRepositories.findOne(userReceiver);
 
     if(!usersReceiverExists) {
-      throw new Error("User Receiver does not exists");
+      throw new NotFoundError("User Receiver does not exist");
     }
 
     const compliment = complimentsRepositories.create({ tagId, userSender, userReceiver, message });

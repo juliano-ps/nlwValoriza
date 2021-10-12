@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { Users } from "./controllers/Users"
-import { Tags } from "./controllers/Tags";
+import { Users } from "./controllers/CreateUserController"
+import { Tags } from "./controllers/CreateTagController";
 import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
 import { CreateComplimentController } from "./controllers/CreateComplimentController";
 import { ListUserSentComplimentsController } from "./controllers/ListUserSentComplimentsController";

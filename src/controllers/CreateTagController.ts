@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { CreateTagService } from "../services/CreateTagService";
+import { HttpStatus } from "../HttpStatus";
 
 class Tags {
   async handle(request: Request, response: Response) {
@@ -9,7 +10,7 @@ class Tags {
 
     const tag = await createTagService.execute(name);
 
-    response.status(201).json(tag);
+    response.status(HttpStatus.CREATED).json(tag);
   }
 }
 

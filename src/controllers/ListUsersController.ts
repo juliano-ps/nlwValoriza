@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { HttpStatus } from "../HttpStatus";
 import { ListUsersService } from "../services/ListUsersService";
 
 class ListUsersController {
@@ -7,7 +8,7 @@ class ListUsersController {
 
     const users = listUsersService.execute();
 
-    return response.status(200).json(users);
+    return response.status(HttpStatus.OK).json(users);
   }
 }
 

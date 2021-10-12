@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { HttpStatus } from "../HttpStatus";
 import { CreateUserService } from "../services/CreateUserService";
 
 class Users {
@@ -9,7 +10,7 @@ class Users {
     
     const user = await createUserService.execute({ name, email, admin, password });
 
-    return response.status(201).json(user);
+    return response.status(HttpStatus.CREATED).json(user);
   }
 }
 

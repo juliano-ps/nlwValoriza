@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { HttpStatus } from "../HttpStatus";
 import { ListUserReceivedComplimentsService } from "../services/ListUserReceivedComplimentsService";
 
 class ListUserReceivedComplimentsController {
@@ -9,7 +10,7 @@ class ListUserReceivedComplimentsController {
 
     const compliments = await listUserReceivedComplimentsService.execute({ userId });
 
-    return response.status(200).json(compliments);
+    return response.status(HttpStatus.OK).json(compliments);
   }
 }
 

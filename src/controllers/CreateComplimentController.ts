@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { CreateComplimentService } from "../services/CreateComplimentService";
-
+import { HttpStatus } from "../HttpStatus";
 
 class CreateComplimentController {
   async handle(request: Request, response: Response) {
@@ -12,7 +12,7 @@ class CreateComplimentController {
 
    const compliment = await createComplimentService.execute({ tagId, userSender: userId, userReceiver, message });
 
-    response.status(201).json(compliment);
+    response.status(HttpStatus.CREATED).json(compliment);
   }
 }
 

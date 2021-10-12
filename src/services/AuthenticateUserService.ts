@@ -2,6 +2,7 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { getCustomRepository } from "typeorm";
+import { UnauthorizedError } from "../errors/UnauthorizedError";
 import { UsersRepositories } from "../repositories/UsersRepositories";
 
 interface IAuthenticationRequest {
@@ -16,13 +17,13 @@ class AuthenticateUserService {
     const user = await usersRepositories.findOne({ email });
 
     if(!user) {
-      throw new Error("Email/Password incorrect");
+      throw new UnauthorizedError("Incorrect Email or Password");
     }
 
     const passwordMatch = await compare(password, user.password);
 
     if(!passwordMatch) {
-      throw new Error("Email/Password incorrect");
+      throw new UnauthorizedError("Incorrect Email or Password");
     }
 
     //colocar segundo parametro num .env

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { ListTagsService } from "../services/ListTagsService";
+import { HttpStatus } from "../HttpStatus";
 
 class ListTagsController {
   async handle(request: Request, response: Response) {
@@ -7,7 +8,7 @@ class ListTagsController {
 
     const tags = await listTagsService.execute();
 
-    return response.status(200).json(tags);
+    return response.status(HttpStatus.OK).json(tags);
   }
 }
 
