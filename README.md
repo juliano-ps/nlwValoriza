@@ -1,22 +1,21 @@
 # NLW Valoriza
 
-## Regras
+## About
 
-- Cadastro de usuário
-  - Não é permitido cadastrar mais de um usuário com o mesmo email
-  - Não é permitido cadastar usuários sem email
+The project was developed during Rocketseat's Next Level Week, it is the Back-End of a compliment web application, where people can exchange compliments with each other. 
 
+## Technologies
 
-- Cadastro de TAG
-  - Não é permitido cadastrar mais de uma tag com o mesmo nome
-  - Não é permitido cadastrar tag sem nome
-  - Não é permitido o cadastro por membros que não sejam administradores
+This project was developed with the aim of studying the following technologies:
+  - [Typescript](https://www.typescriptlang.org/)
+  - [Node.js](https://nodejs.org/en/)
+  - [JSONWebToken](https://github.com/auth0/node-jsonwebtoken#readme)
+  - [Express](https://expressjs.com/pt-br/)
 
+## How to run
 
-
-- Cadastro de elogios
-  - Não é permitido um usuário cadastrar um elogio para si
-  - Não é permitido cadastrar elogios para usuários inválidos
-  - O usuário precisa estar autenticado na aplicação
- 
-
+- Clone the Repository
+- Run the following commands in the project's root folder:
+  - `yarn` to download the dependencies.
+  - `yarn typeorm migration:run` to create the tables in the database.
+  - `yarn dev` to start the application.
