@@ -10,7 +10,7 @@ This project was developed with the aim of studying the following technologies:
   - [Typescript](https://www.typescriptlang.org/)
   - [Node.js](https://nodejs.org/en/)
   - [JSONWebToken](https://github.com/auth0/node-jsonwebtoken#readme)
-  - [Express](https://expressjs.com/pt-br/)
+  - [Express](https://expressjs.com/)
 
 ## How to run
 
