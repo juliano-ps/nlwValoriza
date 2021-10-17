@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { CreateTagService } from "../services/CreateTagService";
 import { HttpStatus } from "../HttpStatus";
 
-class Tags {
+class CreateTagsController {
   async handle(request: Request, response: Response) {
     const { name } = request.body;
 
@@ -14,4 +14,4 @@ class Tags {
   }
 }
 
-export { Tags };
+export { CreateTagsController };

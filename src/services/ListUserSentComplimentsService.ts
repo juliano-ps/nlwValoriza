@@ -3,13 +3,11 @@ import { ComplimentsRepositories } from "../repositories/ComplimentsRepositories
 
 
 class ListUserSentComplimentsService {
-  async execute(userId) {
+  async execute(userId: String) {
     const complimentsRepository = getCustomRepository(ComplimentsRepositories);
 
-    const compliments = await complimentsRepository.find(
-      {
-        where: { userSender: userId},
-        relations: ["userSender", "userReceiver", "tag"]
+    const compliments = await complimentsRepository.find({
+        where: { userSender: userId, },
       });
 
     return compliments;

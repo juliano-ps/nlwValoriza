@@ -1,18 +1,19 @@
 import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
+import { HttpStatus } from "../HttpStatus";
 
 interface IPayload {
   sub: string;
 }
 
 export function ensureAuthenticated(request: Request, response: Response, next: NextFunction) {
-  const tokenWithBearer = request.headers.authorization;
+  const authToken = request.headers.authorization;
 
-  if(!tokenWithBearer) {
-    return response.status(401).end();
+  if(!authToken) {
+    return response.status(HttpStatus.UNAUTHORIZED).end();
   }
 
-  const [, token] = tokenWithBearer.split(" ");
+  const [, token] = authToken.split(" ");
 
   try {
    const { sub } = verify(token, "62252911ea3f7eb5f2ea3d0947728210") as IPayload;
@@ -22,9 +23,7 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
    return next();
 
   }catch (error) {
-    return response.status(401).end();
+    console.error("error", error);
+    return response.status(HttpStatus.UNAUTHORIZED).end();
   }
-  
-
-  return next();
 }

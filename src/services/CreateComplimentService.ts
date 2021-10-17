@@ -17,7 +17,7 @@ class CreateComplimentService {
     const usersRepositories = getCustomRepository(UsersRepositories);
 
     if(userReceiver === userSender) {
-      throw new UnprocessableEntityError("User cannot send a compliment to itself");
+      throw new UnprocessableEntityError("User cannot send a compliment to yourself");
     }
 
     const usersReceiverExists = await usersRepositories.findOne(userReceiver);

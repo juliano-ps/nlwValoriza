@@ -4,7 +4,7 @@ import "express-async-errors";
 import './database';
 import cors from "cors"
 import { router } from "./routes"
-import { errorHandler } from './middlewares/ErrorHandler';
+import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
 app.use(cors());

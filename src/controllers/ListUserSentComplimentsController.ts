@@ -4,11 +4,11 @@ import { ListUserSentComplimentsService } from "../services/ListUserSentComplime
 
 class ListUserSentComplimentsController {
   async handle(request: Request, response: Response) {
-    const listUserSentComplimentsService = new ListUserSentComplimentsService();
-
     const { userId } = request
 
-    const compliments = await listUserSentComplimentsService.execute({ userId });
+    const listUserSentComplimentsService = new ListUserSentComplimentsService();
+
+    const compliments = await listUserSentComplimentsService.execute(userId);
 
     return response.status(HttpStatus.OK).json(compliments);
   }

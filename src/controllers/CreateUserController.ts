@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { HttpStatus } from "../HttpStatus";
 import { CreateUserService } from "../services/CreateUserService";
 
-class Users {
+class CreateUserController {
   async handle(request: Request, response: Response) {
     const { name, email, admin, password } = request.body;
 
@@ -14,4 +14,4 @@ class Users {
   }
 }
 
-export { Users };
+export { CreateUserController };
