@@ -26,8 +26,7 @@ class AuthenticateUserService {
       throw new UnauthorizedError("Incorrect Email or Password");
     }
 
-    //colocar segundo parametro num .env
-    const token = sign({ email: user.email}, "62252911ea3f7eb5f2ea3d0947728210", {
+    const token = sign({ email: user.email}, process.env.SECRET_KEY, {
      subject: user.id,
      expiresIn: "1d"
     });

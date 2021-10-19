@@ -3,6 +3,8 @@ import { NotFoundError } from "../errors/NotFoundError";
 import { UnprocessableEntityError } from "../errors/UnprocessableEntityError";
 import { ComplimentsRepositories } from "../repositories/ComplimentsRepositories";
 import { UsersRepositories } from "../repositories/UsersRepositories";
+import { Mailer } from "../modules/Mailer";
+import { resolve } from "path";
 
 interface IComplimentRequest {
   tagId: string;
@@ -20,15 +22,21 @@ class CreateComplimentService {
       throw new UnprocessableEntityError("User cannot send a compliment to yourself");
     }
 
-    const usersReceiverExists = await usersRepositories.findOne(userReceiver);
+    const receiver = await usersRepositories.findOne(userReceiver);
 
-    if(!usersReceiverExists) {
+    if(!receiver) {
       throw new NotFoundError("User Receiver does not exist");
     }
 
     const compliment = complimentsRepositories.create({ tagId, userSender, userReceiver, message });
 
     await complimentsRepositories.save(compliment);
+
+    const templatePath = resolve(__dirname, "..", "resources", "mails", "compliment_received.hbs");
+
+    const mailer = new Mailer();
+
+    await mailer.sendEmail(receiver.email, "Elogio recebido", templatePath);
 
     return compliment;
   }
