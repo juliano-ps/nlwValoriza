@@ -20,6 +20,14 @@ class User {
   @Column()
   password: string;
 
+  @Exclude()
+  @Column()
+  recoverPasswordToken: string;
+
+  @Exclude()
+  @Column()
+  recoverPasswordTokenExpiresDate: Date;
+
   @CreateDateColumn()
   createdAt: Date;
 
