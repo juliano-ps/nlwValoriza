@@ -15,7 +15,7 @@ This project was developed with the aim of studying the following technologies:
 ## How to run
 
 - Clone the Repository
-- Run the following commands in the project's root folder:
+- Run the following commands in the project root directory:
   - `yarn` to download the dependencies.
   - `yarn typeorm migration:run` to create the tables in the database.
   - `yarn dev` to start the application.
